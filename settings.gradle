@@ -1,0 +1,2 @@
+include ':app', ':uicomponents'
+rootProject.name='UiComponents'
