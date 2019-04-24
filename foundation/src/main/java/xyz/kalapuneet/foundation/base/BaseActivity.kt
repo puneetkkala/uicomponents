@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
+import xyz.kalapuneet.foundation.extensions.isVisible
 
 abstract class BaseActivity : AppCompatActivity(), LifecycleOwner {
 
