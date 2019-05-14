@@ -2,7 +2,7 @@
 <resources>
     <declare-styleable name="RoundedTextView">
         <attr name="cornerRadius" format="dimension" />
-        <attr name="solidColor" format="dimension" />
+        <attr name="solidColor" format="color" />
         <attr name="startColor" format="color" />
         <attr name="centerColor" format="color" />
         <attr name="endColor" format="color" />
