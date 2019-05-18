@@ -1,6 +1,5 @@
 package xyz.kalapuneet.uicomponents.rounded
 
-import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.View
@@ -19,25 +18,33 @@ class BehaviorRounded(private val view: View): DefaultAttributeMethods {
     private var bottomLeftRadius: Float = UiConstants.NO_VALUE
     private var bottomRightRadius: Float = UiConstants.NO_VALUE
 
-    private var solidColor: Int = UiConstants.NO_COLOR
+    private var solidColor: Int
 
-    private var startColor: Int = UiConstants.NO_COLOR
-    private var centerColor: Int = UiConstants.NO_COLOR
-    private var endColor: Int = UiConstants.NO_COLOR
+    private var startColor: Int
+    private var centerColor: Int
+    private var endColor: Int
 
-    private var strokeColor: Int = UiConstants.NO_COLOR
+    private var strokeColor: Int
     private var strokeSize: Float = UiConstants.NO_VALUE
     private var dashWidth: Float = UiConstants.NO_VALUE
     private var dashGap: Float = UiConstants.NO_VALUE
 
-    private lateinit var context: Context
+    private var context = view.context
+
+    init {
+        solidColor = getTransparent()
+        startColor = getTransparent()
+        centerColor = getTransparent()
+        endColor = getTransparent()
+        strokeColor = getTransparent()
+    }
 
     private fun getTransparent(): Int {
         return ContextCompat.getColor(context, android.R.color.transparent)
     }
 
-    private fun Int.isColor(): Boolean {
-        return this != UiConstants.NO_COLOR
+    private fun Int.isTransparent(): Boolean {
+        return this != getTransparent()
     }
 
     private fun Float.hasValue(): Boolean {
@@ -46,17 +53,17 @@ class BehaviorRounded(private val view: View): DefaultAttributeMethods {
 
     private fun handleColors() {
         when {
-            solidColor.isColor() -> drawable.setColor(solidColor)
-            startColor.isColor() && centerColor.isColor() && endColor.isColor() -> drawable.colors =
+            solidColor.isTransparent() -> drawable.setColor(solidColor)
+            startColor.isTransparent() && centerColor.isTransparent() && endColor.isTransparent() -> drawable.colors =
                 intArrayOf(startColor, centerColor, endColor)
-            startColor.isColor() && endColor.isColor() -> drawable.colors = intArrayOf(startColor, endColor)
-            startColor.isColor() && centerColor.isColor() -> drawable.colors =
+            startColor.isTransparent() && endColor.isTransparent() -> drawable.colors = intArrayOf(startColor, endColor)
+            startColor.isTransparent() && centerColor.isTransparent() -> drawable.colors =
                 intArrayOf(startColor, centerColor, getTransparent())
-            centerColor.isColor() && endColor.isColor() -> drawable.colors =
+            centerColor.isTransparent() && endColor.isTransparent() -> drawable.colors =
                 intArrayOf(getTransparent(), centerColor, endColor)
-            startColor.isColor() -> drawable.colors = intArrayOf(startColor, getTransparent())
-            endColor.isColor() -> drawable.colors = intArrayOf(getTransparent(), endColor)
-            centerColor.isColor() -> drawable.colors = intArrayOf(getTransparent(), centerColor, getTransparent())
+            startColor.isTransparent() -> drawable.colors = intArrayOf(startColor, getTransparent())
+            endColor.isTransparent() -> drawable.colors = intArrayOf(getTransparent(), endColor)
+            centerColor.isTransparent() -> drawable.colors = intArrayOf(getTransparent(), centerColor, getTransparent())
             else -> drawable.setColor(getTransparent())
         }
     }
@@ -84,7 +91,7 @@ class BehaviorRounded(private val view: View): DefaultAttributeMethods {
     }
 
     private fun handleStroke() {
-        if (strokeColor.isColor() && strokeSize.hasValue()) {
+        if (strokeColor.isTransparent() && strokeSize.hasValue()) {
             if (dashWidth.hasValue() && dashGap.hasValue()) {
                 drawable.setStroke(strokeSize.roundToInt(), strokeColor, dashWidth, dashGap)
             } else {
@@ -100,8 +107,7 @@ class BehaviorRounded(private val view: View): DefaultAttributeMethods {
         view.background = drawable
     }
 
-    fun init(context: Context, attrs: AttributeSet?, set: RoundedStyleableSet) {
-        this.context = context
+    fun init(attrs: AttributeSet?, set: RoundedStyleableSet) {
         val typedArray = context.obtainStyledAttributes(attrs, set.base)
         typedArray.apply {
             setCornerRadius(dimension(set.cornerRadius))
@@ -112,15 +118,15 @@ class BehaviorRounded(private val view: View): DefaultAttributeMethods {
                 dimension(set.bottomRightRadius)
             )
             setSolidColor(
-                color(set.solidColor)
+                color(set.solidColor, getTransparent())
             )
             setGradientColors(
-                color(set.startColor),
-                color(set.centerColor),
-                color(set.endColor)
+                color(set.startColor, getTransparent()),
+                color(set.centerColor, getTransparent()),
+                color(set.endColor, getTransparent())
             )
             setStrokeColor(
-                color(set.strokeColor),
+                color(set.strokeColor, getTransparent()),
                 dimension(set.strokeSize),
                 dimension(set.dashWidth),
                 dimension(set.dashGap)

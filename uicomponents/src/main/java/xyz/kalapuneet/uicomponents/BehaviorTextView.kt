@@ -16,15 +16,15 @@ class BehaviorTextView : TextView, DefaultViewMethods {
     }
 
     constructor(context: Context) : super(context) {
-        init(context, null)
+        init(null)
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        init(context, attrs)
+        init(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        init(context, attrs)
+        init(attrs)
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -34,12 +34,11 @@ class BehaviorTextView : TextView, DefaultViewMethods {
         defStyleAttr,
         defStyleRes
     ) {
-        init(context, attrs)
+        init(attrs)
     }
 
-    private fun init(context: Context, attrs: AttributeSet?) {
+    private fun init(attrs: AttributeSet?) {
         rounded.init(
-            context,
             attrs,
             RoundedStyleableSet(
                 base = R.styleable.BehaviorTextView,

@@ -27,7 +27,6 @@ class BehaviorConstraintLayout : ConstraintLayout, DefaultViewMethods {
 
     private fun init(attrs: AttributeSet?) {
         rounded.init(
-            context,
             attrs,
             RoundedStyleableSet(
                 base = R.styleable.BehaviorConstraintLayout,

@@ -9,7 +9,7 @@ interface DefaultAttributeMethods {
         return getDimension(styleableRes, UiConstants.NO_VALUE)
     }
 
-    fun TypedArray.color(@StyleableRes styleableRes: Int): Int {
-        return getColor(styleableRes, UiConstants.NO_COLOR)
+    fun TypedArray.color(@StyleableRes styleableRes: Int, defValue: Int): Int {
+        return getColor(styleableRes, defValue)
     }
 }
