@@ -1,18 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RoundedTextView">
-        <attr name="cornerRadius" format="dimension" />
-        <attr name="solidColor" format="color" />
-        <attr name="startColor" format="color" />
-        <attr name="centerColor" format="color" />
-        <attr name="endColor" format="color" />
-        <attr name="strokeColor" format="color" />
-        <attr name="strokeSize" format="dimension" />
-        <attr name="dashWidth" format="dimension" />
-        <attr name="dashGap" format="dimension" />
-        <attr name="topLeftRadius" format="dimension" />
-        <attr name="topRightRadius" format="dimension" />
-        <attr name="bottomLeftRadius" format="dimension" />
-        <attr name="bottomRightRadius" format="dimension" />
+    <attr name="cornerRadius" format="dimension" />
+    <attr name="solidColor" format="color" />
+    <attr name="startColor" format="color" />
+    <attr name="centerColor" format="color" />
+    <attr name="endColor" format="color" />
+    <attr name="strokeColor" format="color" />
+    <attr name="strokeSize" format="dimension" />
+    <attr name="dashWidth" format="dimension" />
+    <attr name="dashGap" format="dimension" />
+    <attr name="topLeftRadius" format="dimension" />
+    <attr name="topRightRadius" format="dimension" />
+    <attr name="bottomLeftRadius" format="dimension" />
+    <attr name="bottomRightRadius" format="dimension" />
+
+    <declare-styleable name="BehaviorTextView">
+        <attr name="cornerRadius" />
+        <attr name="solidColor" />
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <attr name="strokeColor" />
+        <attr name="strokeSize" />
+        <attr name="dashWidth" />
+        <attr name="dashGap" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
+    </declare-styleable>
+    <declare-styleable name="BehaviorConstraintLayout">
+        <attr name="cornerRadius" />
+        <attr name="solidColor" />
+        <attr name="startColor" />
+        <attr name="centerColor" />
+        <attr name="endColor" />
+        <attr name="strokeColor" />
+        <attr name="strokeSize" />
+        <attr name="dashWidth" />
+        <attr name="dashGap" />
+        <attr name="topLeftRadius" />
+        <attr name="topRightRadius" />
+        <attr name="bottomLeftRadius" />
+        <attr name="bottomRightRadius" />
     </declare-styleable>
 </resources>
