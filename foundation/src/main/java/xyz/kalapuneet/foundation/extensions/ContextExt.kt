@@ -39,8 +39,15 @@ infix fun TextView.loadWith(@StringRes stringRes: Int) {
     this.setText(stringRes)
 }
 
+@Deprecated("Use onClick(view: View, body: () -> Unit)", ReplaceWith("onClick(view: View, body: () -> Unit)"))
 infix fun View.onClick(listener: Function1<View, Unit>) {
     this.setOnClickListener(listener)
+}
+
+fun onClick(view: View, body: () -> Unit) {
+    view.setOnClickListener {
+        body.invoke()
+    }
 }
 
 fun Activity.actionViewWithUrl(url: String) {
